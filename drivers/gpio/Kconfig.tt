@@ -1,0 +1,9 @@
+# Copyright (c) 2025 Tenstorrent AI ALU
+# SPDX-License-Identifier: Apache-2.0
+
+config GPIO_TT
+    bool "Tenstorrent GPIO"
+    default y
+    depends onb DT_HAS_ZEPHYR_GPIO_TT_ENABLED
+    help
+        Enable the Tenstorrent GPIO driver.

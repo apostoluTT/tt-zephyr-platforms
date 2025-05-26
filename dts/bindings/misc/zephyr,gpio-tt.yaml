@@ -1,0 +1,27 @@
+# Copyright (c) 2025 Tenstorrent AI ULC
+# SPDX-License-Identifier: Apache-2.0
+
+description: GPIO TT
+
+compatible: "zephyr,gpio-tt"
+
+include: [gpio-controller.yaml, base.yaml]
+
+properties:
+  reg:
+    required: true
+
+  nggpios:
+    type: int
+    required: true
+
+  port-index:
+    type: int
+    required: true
+
+  "#gpio-cells":
+    const: 2
+
+gpio-cells:
+  - pin
+  - flags

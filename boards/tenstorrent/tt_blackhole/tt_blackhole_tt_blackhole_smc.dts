@@ -20,6 +20,45 @@
 		zephyr,shell-uart = &uart0;
 	};
 
+	gpio0: gpio@800301B4 {
+		compatible = "tt,gpio";
+		reg = <0x800301B4 0x4>;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <8>;
+		port-index = <0>;
+		label = "GPIO_0";
+	};
+
+	gpio1: gpio@80030254 {
+		compatible = "tt,gpio";
+		reg = <0x80030254 0x4>;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <8>;
+		port-index = <1>;
+		label = "GPIO_1";
+	};
+
+	gpio2: gpio@80030594 {
+		compatible = "tt,gpio";
+		reg = <0x80030594 0x4>;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <8>;
+		port-index = <2>;
+		label = "GPIO_2";
+	};
+
+	gpio3: gpio@800305B4 {
+		compatible = "tt,gpio";
+		reg = <0x800305B4 0x4>;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <8>;
+		port-index = <3>;
+		label = "GPIO_3";
+	};
 };
 
 &spi0 {
