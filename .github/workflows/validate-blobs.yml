@@ -1,0 +1,38 @@
+name: Validate Binary Blob Checksums
+
+on:
+  workflow_dispatch:
+  
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+    paths:
+      - 'zephyr/module.yml'
+      - 'zephyr/blobs/**'
+
+jobs:
+  validate-checksums:
+    name: Verify Blob Checksums
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Initialize West
+        run: |
+          pip install west
+          west init -l .
+          west update
+
+      - name: Validate Blobs
+        run: |
+          west blobs fetch -c
+          if ! west blobs fetch; then
+            echo "Checksums failed: A binary blob was updated without updating the sha256 in module.yml"
+            exit 1
+          fi
+
+          echo "Checksums passed"
